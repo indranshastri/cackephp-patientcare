@@ -5,12 +5,7 @@
   */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Doctor'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Appointments'), ['controller' => 'Appointments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Appointment'), ['controller' => 'Appointments', 'action' => 'add']) ?></li>
-    </ul>
+  <?=$this->Element('sidebar',array("type"=>"Doctor","typePural"=>"Doctors"))?>   
 </nav>
 <div class="doctors index large-9 medium-8 columns content">
     <h3><?= __('Doctors') ?></h3>
@@ -20,8 +15,6 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('accepting_patients') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('crated') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -30,9 +23,14 @@
             <tr>
                 <td><?= $this->Number->format($doctor->id) ?></td>
                 <td><?= h($doctor->name) ?></td>
-                <td><?= h($doctor->accepting_patients) ?></td>
-                <td><?= h($doctor->crated) ?></td>
-                <td><?= h($doctor->modified) ?></td>
+                <td>
+                <?php if ($doctor->accepting_patients==1) {
+                    echo "<span style='color:green'>YES</span>";
+                } else {
+                    echo "<span style='color:red'>No</span>";
+                }
+                ?>
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $doctor->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $doctor->id]) ?>

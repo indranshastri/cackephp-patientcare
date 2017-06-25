@@ -5,15 +5,7 @@
   */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Appointment'), ['action' => 'edit', $appointment->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Appointment'), ['action' => 'delete', $appointment->id], ['confirm' => __('Are you sure you want to delete # {0}?', $appointment->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Appointments'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Appointment'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Doctors'), ['controller' => 'Doctors', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Doctor'), ['controller' => 'Doctors', 'action' => 'add']) ?> </li>
-    </ul>
+    <?=$this->Element('sidebar',array("type"=>"Appointment","typePural"=>"Appointments"))?>
 </nav>
 <div class="appointments view large-9 medium-8 columns content">
     <h3><?= h($appointment->id) ?></h3>

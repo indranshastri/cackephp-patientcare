@@ -5,10 +5,7 @@
   */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Invoice'), ['action' => 'add']) ?></li>
-    </ul>
+    <?=$this->Element('sidebar',array("type"=>"Invoice","typePural"=>"Invoices"))?>   
 </nav>
 <div class="invoices index large-9 medium-8 columns content">
     <h3><?= __('Invoices') ?></h3>
@@ -20,8 +17,6 @@
                 <th scope="col"><?= $this->Paginator->sort('ammount') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('service') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('duedate') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('crated') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,12 +24,10 @@
             <?php foreach ($invoices as $invoice): ?>
             <tr>
                 <td><?= $this->Number->format($invoice->id) ?></td>
-                <td><?= $this->Number->format($invoice->patient_id) ?></td>
+                <td><?= $invoice->has('patient') ? $this->Html->link($invoice->patient->name, ['controller' => 'Patients', 'action' => 'view',$invoice->patient->id]) : '' ?></td>
                 <td><?= $this->Number->format($invoice->ammount) ?></td>
                 <td><?= h($invoice->service) ?></td>
                 <td><?= h($invoice->duedate) ?></td>
-                <td><?= h($invoice->crated) ?></td>
-                <td><?= h($invoice->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $invoice->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $invoice->id]) ?>
