@@ -41,9 +41,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
         <div class="top-bar-section">
+            <ul>
+               <li> <?= $this->Html->link(__('Patients'), ['controller'=>'patients','action' => 'index']) ?> </li>
+               <li> <?= $this->Html->link(__('Doctors'), ['controller'=>'doctors','action' => 'index']) ?> </li>
+               <li> <?= $this->Html->link(__('Appointments'), ['controller'=>'appointments','action' => 'index']) ?> </li>
+               <li> <?= $this->Html->link(__('Carriers'), ['controller'=>'carriers','action' => 'index']) ?> </li>
+               <li> <?= $this->Html->link(__('Invoices'), ['controller'=>'invoices','action' => 'index']) ?> </li>
+               
+            </ul>
             <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+                <li> <?= $this->Html->link(__('Manage Users'), ['controller'=>'users','action' => 'index']) ?> </li>
+               <li> <?= $this->Html->link(__('Logout'), ['controller'=>'users','action' => 'logout']) ?> </li>
+               
             </ul>
         </div>
     </nav>
